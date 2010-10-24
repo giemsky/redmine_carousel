@@ -1,0 +1,35 @@
+<% if @project.carousels.empty? %>
+	<p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+	<table class="list carousels">
+	  <thead><tr>
+	    <th><%= l(:field_name) %></th>
+	    <th><%= l(:field_period) %></th>
+		<th><%= l(:field_members) %></th>
+	    <th><%= l(:field_last_run) %></th>
+	    <th><%= l(:field_active) %></th>
+	    <th></th>
+	  </tr></thead>
+	  <tbody>
+	  <% @project.carousels.each do |carousel| %>		
+	  <tr class="carousel <%= cycle("odd", "even") %>">
+	    <td class="carousel_name"><%= link_to carousel.name, edit_project_carousel_path(@project, carousel) %></td>
+	    <td class="period"><%= distance_of_time_in_words(0, carousel.period) %></td>
+		<td class="members"><%= carousel.members.map(&:name).join('<br/>') %></td>
+	    <td class="last_run"><%= format_time(carousel.last_run) %></td>
+		<td class="active"><%= carousel.active? ? l(:general_text_yes) : l(:general_text_no) %></td>
+	    <td class="buttons">
+	    <%= link_to(l(:button_edit), edit_project_carousel_path(@project, carousel), :class => 'icon icon-edit') %>
+	    <%= link_to(l(:button_delete), project_carousel_path(@project, carousel), :confirm => l(:text_are_you_sure), :method => :delete, :class => 'icon icon-del') %>
+	    </td>
+	  </tr>		
+	  <% end %>
+	  </tbody>
+	</table>
+<% end %>
+
+<p>
+	<%= link_to l(:label_new_carousel), new_project_carousel_path(@project) %>
+</p>
+
+<% render :partial => 'carousels/header' %>

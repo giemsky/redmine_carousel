@@ -1,0 +1,15 @@
+# English strings go here for Rails i18n
+en:
+  label_carousel: "Carousel"
+  label_carousels: "Carousels"
+  label_new_carousel: "New Carousel"
+  label_edit_carousel: "Edit Carousel"
+  label_issue_settings: "Issue settings"
+  label_hours: "hours"
+  label_days: "days"
+  label_weeks: "weeks"
+  label_months: "months"
+  
+  field_period: "Period"
+  field_last_run: "Last Run"
+  field_members: "Members"

@@ -1,0 +1,5 @@
+table.carousels td.carousel_name { padding-left: 25px; text-align: left; }
+table.carousels td.period,
+table.carousels td.last_run,
+table.carousels td.active { text-align: center; }
+select#carousel_member_ids { width: 200px; }

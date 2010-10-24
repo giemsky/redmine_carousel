@@ -1,0 +1,14 @@
+pl:
+  label_carousel: "Karuzela"
+  label_carousels: "Karuzele"
+  label_new_carousel: "Nowa karuzela"
+  label_edit_carousel: "Edycja karuzeli"
+  label_issue_settings: "Ustawienia zagadnień"
+  label_hours: "godziny"
+  label_days: "dni"
+  label_weeks: "tygodnie"
+  label_months: "miesiące"
+  
+  field_period: "Okres"
+  field_last_run: "Ostatnio uruchomiono"
+  field_members: "Członkowie"

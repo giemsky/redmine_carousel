@@ -1,0 +1,10 @@
+<h2><%= l(:label_edit_carousel) %></h2>
+
+<% labelled_tabular_form_for :carousel, @carousel, :url => project_carousel_url(@project, @carousel), :html => {:id => 'carousel_form', :method => 'put'} do |f| %>
+
+	<%= render :partial => f %>
+	<%= f.submit 'Update' %>
+
+<% end %>
+
+<% render :partial => 'header' %>

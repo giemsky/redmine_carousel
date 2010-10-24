@@ -1,0 +1,40 @@
+<% html_title l(:label_carousels) -%>
+
+<div class="contextual">
+	<%= link_to_if_authorized l(:label_new_carousel), new_project_carousel_path(@project), :class => 'icon icon-add' %>
+</div>
+
+<h2><%=l(:label_carousels)%></h2>
+
+<% delete_allowed = User.current.allowed_to?(:destroy_carousels, @project) %>
+<% edit_allowed = User.current.allowed_to?(:edit_carousels, @project) %>
+
+<% if @carousels.empty? %>
+	<p class="nodata"><%= l(:label_no_data) %></p>
+<% else %>
+	<table class="list carousels">
+	  <thead><tr>
+	    <%= sort_header_tag('name', :caption => l(:field_name)) %>
+	    <%= sort_header_tag('period', :caption => l(:field_period), :default_order => 'desc') %>
+		<th><%= l(:field_members) %></th>
+	    <%= sort_header_tag('last_run', :caption => l(:field_last_run), :default_order => 'desc') %>
+	    <th></th>
+	  </tr></thead>
+	  <tbody>
+	  <% @carousels.each do |carousel| %>		
+	  <tr class="carousel <%= cycle("odd", "even") %>">
+	    <td class="carousel_name"><%= carousel.name %></td>
+	    <td class="period"><%= carousel.period_name %></td>
+		<td class="members"><%= carousel.members.map(&:name).join('<br/>') %></td>
+	    <td class="last_run"><%= format_time(carousel.last_run) %></td>
+	    <td align="center">
+	    <%= link_to(image_tag('edit.png'), edit_project_carousel_path(@project, carousel)) if edit_allowed %>
+	    <%= link_to(image_tag('delete.png'), project_carousel_path(@project, carousel), :confirm => l(:text_are_you_sure), :method => :delete) if delete_allowed %>
+	    </td>
+	  </tr>		
+	  <% end %>
+	  </tbody>
+	</table>
+<% end %>
+
+<% render :partial => 'header' %>

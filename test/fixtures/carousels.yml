@@ -1,0 +1,7 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  period: 1
+  project_id: 1
+  name: one
+  last_run: 2010-09-21 23:54:25

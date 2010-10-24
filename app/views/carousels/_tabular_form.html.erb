@@ -1,0 +1,56 @@
+<%= error_messages_for :carousel %>
+<div class="box">
+	<p>
+		<%= tabular_form.text_field :name, :required => true %>
+	</p>
+	
+	<p>
+		<%= tabular_form.check_box :active %>
+	</p>
+
+	<p>
+		<%= tabular_form.text_field :time_period_quantity, :required => true, :size => 2, :label => :field_period %>
+		<%= tabular_form.select :time_period_seconds, options_from_collection_for_select(TimePeriod.all, :seconds, :name, @carousel.time_period_seconds), :no_label => true %>
+	</p>
+	
+	<p>
+		<%= tabular_form.select :member_ids, options_from_collection_for_select(@members, :id, :name, @carousel.member_ids), {:label => :field_members}, {:multiple => 'multiple'} %>
+	</p>
+</div>
+
+<fieldset class="box">
+	<legend><%= l(:label_issue_settings) %></legend>
+	
+	<% tabular_form.fields_for @carousel.issue_settings do |issue_settings| %>
+
+		<p>
+			<%= issue_settings.text_field :subject, :required => true %>
+		</p>
+
+		<p>
+			<%= issue_settings.select :tracker_id, options_from_collection_for_select(@trackers, :id, :name, @carousel.issue_settings.tracker_id), {:label => :field_tracker, :required => true} %>
+		</p>
+		
+		<p>
+			<%= issue_settings.select :priority_id, options_from_collection_for_select(@issue_priorities, :id, :name, @carousel.issue_settings.priority_id), {:label => :field_issue_priority, :required => true, :label => :field_priority} %>
+		</p>
+	
+		<p>
+			<%= issue_settings.select :category_id, options_from_collection_for_select(@issue_categories, :id, :name, @carousel.issue_settings.category_id), {:label => :field_issue_category, :required => true, :label => :field_category} %>
+		</p>
+	
+		<p>
+			<%= issue_settings.select :author_id, options_from_collection_for_select(@members, :id, :name, @carousel.issue_settings.author_id), {:label => :field_author, :required => true} %>
+		</p>
+	
+		<p><%= issue_settings.text_area :description,
+		                   :cols => 60,
+		                   :rows => (@carousel.issue_settings.description.blank? ? 10 : [[10, @carousel.issue_settings.description.length / 50].max, 100].min),
+		                   :accesskey => accesskey(:edit),
+		                   :class => 'wiki-edit' %></p>
+	
+	<% end %>
+
+</fieldset>
+
+<%= wikitoolbar_for 'carousel_carousel_issue_settings_description' %>
