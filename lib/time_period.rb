@@ -9,12 +9,18 @@ class TimePeriod < Struct.new(:name, :seconds)
       new(l(:label_months), 1.month)
     ]
   end
+
+  def self.min_seconds
+    all.min_by(&:seconds).seconds
+  end
   
   def self.quantity(total_seconds)
+    return 0 unless total_seconds >= min_seconds
     total_seconds / greatest_divisor(total_seconds).seconds
   end
   
   def self.seconds(total_seconds)
+    return 0 unless total_seconds >= min_seconds
     greatest_divisor(total_seconds).seconds
   end
   

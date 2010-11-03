@@ -1,6 +1,18 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
+carousel_issue_001:
   id: 1
   issue_id: 1
   carousel_id: 1
-  user_id: 1
+  user_id: 2
+
+carousel_issue_002:
+  id: 2
+  issue_id: 2
+  carousel_id: 2
+  user_id: 2
+
+carousel_issue_003:
+  id: 3
+  issue_id: 3
+  carousel_id: 2
+  user_id: 3

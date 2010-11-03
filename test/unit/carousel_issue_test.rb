@@ -1,10 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CarouselIssueTest < ActiveSupport::TestCase
-  fixtures :carousel_issues
-
-  # Replace this with your real tests.
-  def test_truth
-    assert true
-  end
+  should_belong_to(:issue)
+  should_belong_to(:carousel)
+  should_belong_to(:user)
 end

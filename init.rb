@@ -29,6 +29,6 @@ Redmine::Plugin.register :redmine_carousel do
   author_url 'http://www.gmiklaszewski.pl'
 
   project_module :carousels do
-    permission :manage_carousels, :carousels => [:show, :new, :create, :edit, :update, :destroy]
+    permission :manage_carousels, :carousels => [:new, :create, :edit, :update, :destroy]
   end
 end

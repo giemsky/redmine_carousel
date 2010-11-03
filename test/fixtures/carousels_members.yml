@@ -1,0 +1,15 @@
+member_001:
+  member_id: 1
+  carousel_id: 1
+
+member_002:
+  member_id: 2
+  carousel_id: 1
+
+member_003:
+  member_id: 1
+  carousel_id: 2
+  
+member_004:
+  member_id: 2
+  carousel_id: 2

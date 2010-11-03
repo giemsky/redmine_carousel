@@ -9,8 +9,8 @@ class Carousel < ActiveRecord::Base
   has_many :carousel_issues, :dependent => :destroy
   has_many :issues, :through => :carousel_issues
   
-  validates_presence_of :name
-  validates_numericality_of :period, :greater_than => 0
+  validates_presence_of :name, :project
+  validates_numericality_of :period, :greater_or_equal_to => TimePeriod.all.min_by(&:seconds).seconds
   validate :validate_issue_settings
   
   before_save :set_issue_settings
@@ -18,6 +18,10 @@ class Carousel < ActiveRecord::Base
   
   named_scope :to_run, :conditions => "NOW() > ADDDATE(COALESCE(last_run, '1970-01-01'), INTERVAL period SECOND)"
   named_scope :active, :conditions => {:active => true}
+  
+  def after_initialize
+    self.auto_assign ||= Hash.new
+  end
   
   def next_run
     self.last_run + self.period
@@ -61,21 +65,14 @@ class Carousel < ActiveRecord::Base
   end
   
   def issue_settings
-    @issue_settings ||= CarouselIssueSettings.load(auto_assign)
+    @issue_settings ||= CarouselIssueSettings.new(auto_assign)
   end
   alias_method :carousel_issue_settings, :issue_settings
   
-  def issue_settings=(attributes)
-    @issue_settings = CarouselIssueSettings.load(attributes)
+  def issue_settings=(attrs)
+    @issue_settings = CarouselIssueSettings.new(attrs)
   end
   alias_method :carousel_issue_settings=, :issue_settings=
-  
-  private
-  
-  def last_run_user
-    return nil if carousel_issues.empty?
-    carousel_issues.first.user
-  end
   
   def next_run_user
     return nil if users_queue.empty?
@@ -88,8 +85,15 @@ class Carousel < ActiveRecord::Base
     end
   end
   
+  def last_run_user
+    return nil if carousel_issues.empty?
+    carousel_issues.last.user
+  end
+  
+  private
+  
   def set_issue_settings
-    self.auto_assign = issue_settings.to_hash
+    self.auto_assign = issue_settings.attributes
   end
   
   def set_period

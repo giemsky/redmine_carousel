@@ -1,7 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
+carousel_001:
   id: 1
-  period: 1
+  period: 7200
   project_id: 1
-  name: one
-  last_run: 2010-09-21 23:54:25
+  name: test carousel
+  last_run: 2010-09-21 23:00:00
+
+carousel_002:
+  id: 2
+  period: 3600
+  project_id: 1
+  name: awesome carousel
+  last_run: 2010-10-21 23:00:00
+
+carousel_003:
+  id: 3
+  period: 3600
+  project_id: 1
+  name: more awesome carousel
+  last_run: 2010-10-21 23:00:00
