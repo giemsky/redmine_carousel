@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CarouselTest < ActiveSupport::TestCase
-  fixtures :carousels, :projects, :trackers, :enumerations, :issue_categories,
-           :members, :carousels_members, :carousel_issues, :users
+  fixtures :carousels, :projects, :trackers, :enumerations, :issue_categories, :trackers, :projects_trackers,
+           :members, :carousels_members, :carousel_issues, :users, :issue_statuses
 
   should_validate_presence_of(:name)
   should_validate_presence_of(:project)
@@ -57,7 +57,7 @@ class CarouselTest < ActiveSupport::TestCase
   
   context 'next run' do
     should 'equal last_run + period' do
-      assert_equal DateTime.parse('2010-09-22 01:00:00'), carousels(:carousel_001).next_run
+      assert_equal Time.parse('2010-09-22 01:00:00'), carousels(:carousel_001).next_run
     end
   end
 
