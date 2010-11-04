@@ -1,3 +1,51 @@
-= Redmine Carousel
+= Redmine Carousel Plugin
 
-TODO
+The plugin can be used for periodic actions that occur during project development process. It automatically generates issue assigned to the next user in the carousel queue every specified time period. You can set users queue, issue settings and time period. Redmine Carousel depends on business_time gem, so you can specify your working hours and holidays, so issues won't be generated if there is nobody in the office.
+
+= Setup
+
+=== Dependencies
+
+Business_time gem is required by Carousel Plugin.
+
+Version 0.3.0 of business_time gem has a bug that must be fixed to work properly. Detailed explanation is here[https://github.com/bokmann/business_time/issues#issue/4].
+
+Generate business_time config file:
+
+  ./script/generate business_time_config
+
+Set up you working time and holidays in the config file:
+  
+  config/business_time.yml
+
+=== Plugin installation
+
+Install redmine_carousel into vendor/plugins directory with:
+
+  ruby script/plugin install git@github.com:gmiklaszewski/redmine_carousel.git 
+
+or download and extract tar or zip file.
+
+Run plugins migrations:
+
+  RAILS_ENV=production rake db:migrate_plugin
+
+Restart web server.
+
+Now you can add carousel module to you projects. You can manage carousels in project's settings tab.
+
+=== Usage
+
+Put the following rake task in your crontab file:
+
+  rake carousel:run
+
+Remember to execute it often enough to meet time periods set for you carousels.
+
+= Other stuff
+
+Author:	Grzegorz Miklaszewski <mail@gmiklaszewski.pl>
+
+=== Warranty
+
+This software is provided "as is" and without any express or implied warranties, including, without limitation, the implied warranties of merchantibility and fitness for a particular purpose.
