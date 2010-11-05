@@ -28,7 +28,7 @@ or download and extract tar or zip file.
 
 Run plugins migrations:
 
-  RAILS_ENV=production rake db:migrate_plugin
+  RAILS_ENV=production rake db:migrate_plugins
 
 Restart web server.
 
@@ -38,7 +38,7 @@ Now you can add carousel module to you projects. You can manage carousels in pro
 
 Put the following rake task in your crontab file:
 
-  rake carousel:run
+  RAILS_ENV=production rake carousel:run
 
 Remember to execute it often enough to meet time periods set for you carousels.
 
