@@ -10,6 +10,9 @@ Business_time gem is required by Carousel Plugin.
 
 Version 0.3.0 of business_time gem has a bug that must be fixed to work properly. Detailed explanation is here[https://github.com/bokmann/business_time/issues#issue/4].
 
+Put this in your config/environment.rb file:
+  config.gem "business_time"
+
 Generate business_time config file:
 
   ./script/generate business_time_config
