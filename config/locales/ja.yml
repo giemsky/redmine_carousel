@@ -1,0 +1,15 @@
+# Japanese strings go here for Rails i18n
+ja:
+  label_carousel: "定期チケット"
+  label_carousels: "定期チケット"
+  label_new_carousel: "定期チケットを作成する"
+  label_edit_carousel: "定期チケットを編集する"
+  label_issue_settings: "チケット設定"
+  label_hours: "時間"
+  label_days: "日"
+  label_weeks: "週"
+  label_months: "月"
+  
+  field_period: "間隔"
+  field_last_run: "最終実行日"
+  field_members: "メンバー"
