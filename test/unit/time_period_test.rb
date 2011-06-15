@@ -8,7 +8,7 @@ class TimePeriodTest < ActiveSupport::TestCase
     end
 
     should 'return zero if too small number of seconds' do
-      assert_equal 0, TimePeriod.seconds(100)
+      assert_equal 0, TimePeriod.seconds(10)
     end
   end
 
@@ -18,7 +18,7 @@ class TimePeriodTest < ActiveSupport::TestCase
     end
 
     should 'return zero if too small number of seconds' do
-      assert_equal 0, TimePeriod.quantity(100)
+      assert_equal 0, TimePeriod.quantity(10)
     end
   end
 
@@ -30,7 +30,7 @@ class TimePeriodTest < ActiveSupport::TestCase
 
   context 'min seconds' do
     should 'return minimal value of seconds' do
-      assert_equal 3600, TimePeriod.min_seconds
+      assert_equal 60, TimePeriod.min_seconds
     end
   end
 end

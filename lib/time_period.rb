@@ -3,11 +3,11 @@ class TimePeriod < Struct.new(:name, :seconds)
   
   def self.all
     [
-      new(l(:label_minutes),  1.minute),
-      new(l(:label_hours),    1.hour),
-      new(l(:label_days),     1.day),
-      new(l(:label_weeks),    1.week),
-      new(l(:label_months),   1.month)
+			new(l(:label_minutes),  1.minute),
+      new(l(:label_hours),   1.hour),
+      new(l(:label_days),    1.day),
+      new(l(:label_weeks),   1.week),
+      new(l(:label_months),  1.month)
     ]
   end
 

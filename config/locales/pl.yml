@@ -4,6 +4,7 @@ pl:
   label_new_carousel: "Nowa karuzela"
   label_edit_carousel: "Edycja karuzeli"
   label_issue_settings: "Ustawienia zagadnień"
+  label_minutes: "minuty"
   label_hours: "godziny"
   label_days: "dni"
   label_weeks: "tygodnie"
