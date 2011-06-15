@@ -9,14 +9,14 @@ class Carousel < ActiveRecord::Base
   has_many :carousel_issues, :dependent => :destroy
   has_many :issues, :through => :carousel_issues
   
-  validates_presence_of :name, :project
+  validates_presence_of :name, :project, :begin_at
   validates_numericality_of :period, :greater_or_equal_to => TimePeriod.all.min_by(&:seconds).seconds
   validate :validate_issue_settings
   
   before_save :set_issue_settings
   before_validation :set_period
   
-  named_scope :to_run, :conditions => "NOW() > ADDDATE(COALESCE(last_run, '1970-01-01'), INTERVAL period SECOND)"
+  named_scope :to_run, :conditions => "NOW() > COALESCE(begin_at, '1970-01-01') AND NOW() > ADDDATE(COALESCE(last_run, '1970-01-01'), INTERVAL period SECOND)"
   named_scope :active, :conditions => {:active => true}
   
   def after_initialize

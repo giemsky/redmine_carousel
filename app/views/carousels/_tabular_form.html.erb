@@ -9,6 +9,8 @@
 	</p>
 
 	<p>
+		<%= tabular_form.text_field :begin_at, :size => 17, :required => true %><%= calendar_with_time_for('carousel_begin_at') %></a>
+	<p>
 		<%= tabular_form.text_field :time_period_quantity, :required => true, :size => 2, :label => :field_period %>
 		<%= tabular_form.select :time_period_seconds, options_from_collection_for_select(TimePeriod.all, :seconds, :name, @carousel.time_period_seconds), :no_label => true %>
 	</p>

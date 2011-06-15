@@ -93,6 +93,7 @@ class CarouselsControllerTest < ActionController::TestCase
                 :time_period_quantity => 5,
                 :time_period_seconds => 3600,
                 :member_ids => [2, 3],
+								:begin_at => Time.now.tomorrow.to_s(:db),
                 :issue_settings => {
                   :subject => 'Carousel Issue Subject',
                   :tracker_id   => trackers(:trackers_001).id,

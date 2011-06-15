@@ -12,3 +12,4 @@ pl:
   field_period: "Okres"
   field_last_run: "Ostatnio uruchomiono"
   field_members: "Członkowie"
+  field_begin_at: "Start od"

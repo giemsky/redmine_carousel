@@ -5,6 +5,7 @@ carousel_001:
   project_id: 1
   name: test carousel
   last_run: 2010-09-21 23:00:00
+  begin_at: 2011-09-21 00:00:00
 
 carousel_002:
   id: 2
@@ -12,6 +13,7 @@ carousel_002:
   project_id: 1
   name: awesome carousel
   last_run: 2010-10-21 23:00:00
+  begin_at: 2011-09-21 00:00:00
 
 carousel_003:
   id: 3
@@ -19,3 +21,18 @@ carousel_003:
   project_id: 1
   name: more awesome carousel
   last_run: 2010-10-21 23:00:00
+  begin_at: 2010-09-21 00:00:00
+
+carousel_004:
+  id: 4
+  period: 3600
+  project_id: 1
+  name: more awesome carousel
+  begin_at: 2010-09-21 00:00:00
+
+carousel_005:
+  id: 5
+  period: 3600
+  project_id: 1
+  name: more awesome carousel
+  begin_at: <%= Time.now.tomorrow.to_s(:db) %>

@@ -6,6 +6,7 @@ class CarouselTest < ActiveSupport::TestCase
 
   should_validate_presence_of(:name)
   should_validate_presence_of(:project)
+	should_validate_presence_of(:begin_at)
   
   should_have_many(:carousel_issues)
   should_have_many(:issues)
@@ -18,14 +19,27 @@ class CarouselTest < ActiveSupport::TestCase
   end
   
   should 'have to_run scope' do
-    expected_options = { :conditions => "NOW() > ADDDATE(COALESCE(last_run, '1970-01-01'), INTERVAL period SECOND)" }
+    expected_options = { :conditions => "NOW() > COALESCE(begin_at, '1970-01-01') AND NOW() > ADDDATE(COALESCE(last_run, '1970-01-01'), INTERVAL period SECOND)" }
     assert_equal expected_options, Carousel.to_run.proxy_options
   end
+
+	# TODO: be more specific
+	def test_to_run_scope
+		# last_run & begin_at in the past
+		assert Carousel.to_run.include?(carousels(:carousel_003))
+
+		# no last_run, begin_at in the past
+		assert Carousel.to_run.include?(carousels(:carousel_004))
+
+		# no last_run, begin_at in the future
+		assert !Carousel.to_run.include?(carousels(:carousel_005))
+	end
   
   context 'save' do
     setup do
       @carousel = Carousel.create!(:project => projects(:projects_001), 
-                                   :name => 'My Carousel', 
+                                   :name => 'My Carousel',
+																	 :begin_at => Time.now,
                                    :time_period_quantity => 5, 
                                    :time_period_seconds => 3600,
                                    :issue_settings => {
