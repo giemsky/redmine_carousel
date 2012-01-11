@@ -24,7 +24,7 @@ Redmine::Plugin.register :redmine_carousel do
   name 'Redmine Carousel plugin'
   author 'Grzegorz Miklaszewski'
   description 'This plugin automatically creates issues for the specified periodic activity e.g. testing queue.'
-  version '1.0.1'
+  version '1.2.0'
   url 'http://www.gmiklaszewski.pl/redmine_carousel'
   author_url 'http://www.gmiklaszewski.pl'
 
