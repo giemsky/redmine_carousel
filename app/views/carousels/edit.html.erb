@@ -2,7 +2,7 @@
 
 <% labelled_tabular_form_for :carousel, @carousel, :url => project_carousel_url(@project, @carousel), :html => {:id => 'carousel_form', :method => 'put'} do |f| %>
 
-	<%= render :partial => f %>
+	<%= render :partial => 'tabular_form', :object => f %>
 	<%= f.submit 'Update' %>
 
 <% end %>

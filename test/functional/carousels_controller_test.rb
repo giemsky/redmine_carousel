@@ -26,21 +26,21 @@ class CarouselsControllerTest < ActionController::TestCase
 
     context '#edit' do
       should 'get 302' do
-        get :edit, :project_id => eval(project)
+        get :edit, :project_id => eval(project), :id => eval(project).carousels.first
         assert_response 403
       end
     end
 
     context '#update' do
       should 'get 302' do
-        put :update, :project_id => eval(project)
+        put :update, :project_id => eval(project), :id => eval(project).carousels.first
         assert_response 403
       end
     end
 
     context '#destroy' do
       should 'get 302' do
-        delete :destroy, :project_id => eval(project)
+        delete :destroy, :project_id => eval(project), :id => eval(project).carousels.first
         assert_response 403
       end
     end
