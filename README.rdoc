@@ -8,7 +8,7 @@ The plugin can be used for periodic actions that occur during project developmen
 
 Business_time gem is required by Carousel Plugin.
 
-Version 0.3.0 of business_time gem has a bug that must be fixed to work properly. Detailed explanation is here[https://github.com/bokmann/business_time/issues#issue/4].
+Version 0.3.x of business_time gem has a bug that must be fixed to work properly. Detailed explanation is here[https://github.com/bokmann/business_time/issues#issue/4].
 
 Put this in your config/environment.rb file:
   config.gem "business_time"
@@ -20,6 +20,14 @@ Generate business_time config file:
 Set up you working time and holidays in the config file:
   
   config/business_time.yml
+
+=== Redmine 1.3.x
+
+Use version 1.2.0 or higher. Previous versions are not compatible.
+
+=== Redmine < 1.3.x
+
+Use version 1.1.0.
 
 === Plugin installation
 
