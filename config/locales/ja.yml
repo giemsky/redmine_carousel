@@ -10,8 +10,8 @@ ja:
   label_days: "日"
   label_weeks: "週"
   label_months: "月"
-  
+
   field_period: "間隔"
-  field_last_run: "最終実行日"
+  field_last_run: "最終実行日時"
   field_members: "メンバー"
-  field_begin_at: "から開始"
+  field_begin_at: "開始日時"
