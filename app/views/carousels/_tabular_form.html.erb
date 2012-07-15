@@ -1,5 +1,5 @@
 <%= error_messages_for :carousel %>
-<div class="box">
+<div class="box tabular">
 	<p>
 		<%= tabular_form.text_field :name, :required => true %>
 	</p>
@@ -20,7 +20,7 @@
 	</p>
 </div>
 
-<fieldset class="box">
+<fieldset class="box tabular">
 	<legend><%= l(:label_issue_settings) %></legend>
 	
 	<% tabular_form.fields_for @carousel.issue_settings do |issue_settings| %>
